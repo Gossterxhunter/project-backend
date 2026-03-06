@@ -8,6 +8,19 @@ import os
 
 # Important: Core imports before routers to avoid initialization order issues
 import models, schemas, auth, database, utils
+from fastapi.middleware.cors import CORSMiddleware
+
+origins = [
+    "https://your-frontend.vercel.app"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Router imports
 from routers import auth_router, requests_router, messages_router, admin_router, users_router
